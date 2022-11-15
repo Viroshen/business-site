@@ -251,8 +251,26 @@ body {
     z-index: -1;
 }
 /* ///////////////////////////////////Shop/Products////////////////////////// */
-.gallery-header {
+.shop-header {
     margin-top: 50px;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchbar {
+    padding: 15px;
+    border-radius: 10px;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+.gallery-header {
+    /* margin-top: 50px; */
     margin-bottom: 1rem;
     text-align: center;
     color: #777;
