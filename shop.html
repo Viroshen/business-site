@@ -44,52 +44,76 @@
     </div>
     
     <div class="gallery">
-        <div class="product-card">
+        <div id="Clipper - lighter - 49.99" class="product-card">
             <img src="images/product1.jpg" alt="">
             <div class="product-title">
                 <h3>Clipper - Lighter</h3>
                 <p>R49.99</p>
             </div>
+            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
 
-        <div class="product-card">
+        <div id="Zippo - lighter - 349.99" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
                 <h3>Zippo - Bronze Engraved</h3>
                 <p>R49.99</p>
             </div>
+            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
 
-        <div class="product-card">
-            <img src="images/product1.jpg" alt="">
-            <div class="product-title">
-                <h3>Clipper - Lighter (Pink)</h3>
-                <p>R49.99</p>
-            </div>
-        </div>
-        <div class="product-card">
+        <div id="Zippo - lighter - 149.99" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
-                <h3>Clipper Lighter (Pink) adbajshabjhv</h3>
+                <h3>Zippo - Bronze Engraved</h3>
                 <p>R49.99</p>
             </div>
+            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
-        <div class="product-card">
-            <img src="images/product1.jpg" alt="">
-            <div class="product-title">
-                <h3>Clipper Lighter (Pink) adbajshabjhv</h3>
-                <p>R49.99</p>
-            </div>
-        </div>
-        <div class="product-card">
+        
+        <div id="Zippo - lighter - 349.99" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
-                <h3>Clipper Lighter (Pink) adbajshabjhv</h3>
+                <h3>Zippo - Bronze Engraved</h3>
                 <p>R49.99</p>
             </div>
+            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+        </div>
+
+        <div id="Zippo - lighter - 349.99" class="product-card">
+            <img src="images/product2.jpg" alt="">
+            <div class="product-title">
+                <h3>Zippo - Bronze Engraved</h3>
+                <p>R49.99</p>
+            </div>
+            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+        </div>
+
+        <div id="Zippo - lighter - 349.99" class="product-card">
+            <img src="images/product2.jpg" alt="">
+            <div class="product-title">
+                <h3>Zippo - Bronze Engraved</h3>
+                <p>R49.99</p>
+            </div>
+            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
     </div>
 
+    <label for="toggle-cart" class="cart-btn"><i class="fas fa-cart-shopping"></i></label>
+    <input type="checkbox" id="toggle-cart">
+    <div class="cart-body">
+        <h3>My Cart</h3>
+        <ul id="cart-items">
+            <!-- Products to be added via javascript as <li> tags -->
+                
+        </ul>
+        <div class="cart-btn-container">
+            <span class="checkout"><a href="#">Checkout</a></span>
+            <span class="cancel">Cancel</span>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/e88f34759b.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
