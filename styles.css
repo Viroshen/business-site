@@ -481,8 +481,19 @@ input[type=checkbox]:checked ~ .cart-body {
     padding: .5rem;
 }
 
+.cart-list-item > .remove-item {
+    float: right;
+}
+
+.cart-list-item > .remove-item:hover {
+    color: red;
+    scale: 1.5;
+    cursor: pointer;
+}
+
 .cart-body > .cart-btn-container > .cancel:hover {
     background-color: #e04747;
+    cursor: pointer;
 }
 
 .cart-body > .cart-btn-container > .checkout:hover {
