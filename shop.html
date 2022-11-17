@@ -44,72 +44,72 @@
     </div>
     
     <div class="gallery">
-        <div id="Clipper - lighter - 49.99" class="product-card">
+        <div id="Ab123" description="Zippo - lighter" price="49.99" class="product-card">
             <img src="images/product1.jpg" alt="">
             <div class="product-title">
                 <h3>Clipper - Lighter</h3>
                 <p>R49.99</p>
             </div>
-            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
 
-        <div id="Zippo - lighter - 349.99" class="product-card">
+        <div id="cH342" description="Alfred Dunhill - lighter" price="349.99" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
-                <h3>Zippo - Bronze Engraved</h3>
-                <p>R49.99</p>
+                <h3>Alfred Dunhill - lighter</h3>
+                <p>R349.99</p>
             </div>
-            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
 
-        <div id="Zippo - lighter - 149.99" class="product-card">
+        <div id="LP385" description="Colibri - lighter" price="100.00" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
-                <h3>Zippo - Bronze Engraved</h3>
-                <p>R49.99</p>
+                <h3>Colibri - lighter</h3>
+                <p>R100.00</p>
             </div>
-            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
         
-        <div id="Zippo - lighter - 349.99" class="product-card">
+        <div id="Hg894" description="Ronson - lighter" price="129.50" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
-                <h3>Zippo - Bronze Engraved</h3>
-                <p>R49.99</p>
+                <h3>Ronson - lighter</h3>
+                <p>R129.50</p>
             </div>
-            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
 
-        <div id="Zippo - lighter - 349.99" class="product-card">
+        <div id="Jk403" description="Zippo - lighter(gold)" price="280.00" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
-                <h3>Zippo - Bronze Engraved</h3>
-                <p>R49.99</p>
+                <h3>Zippo - lighter(gold)</h3>
+                <p>R280.00</p>
             </div>
-            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
 
-        <div id="Zippo - lighter - 349.99" class="product-card">
+        <div id="Ab342" description="Bic - lighter" price="29.90" class="product-card">
             <img src="images/product2.jpg" alt="">
             <div class="product-title">
-                <h3>Zippo - Bronze Engraved</h3>
-                <p>R49.99</p>
+                <h3>Bic - lighter</h3>
+                <p>R29.90</p>
             </div>
-            <button onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
         </div>
     </div>
 
-    <label for="toggle-cart" class="cart-btn"><i class="fas fa-cart-shopping"></i></label>
+    <label for="toggle-cart" class="cart-btn"><i class="fas fa-cart-shopping"></i><span class="counter">0</span></label>
     <input type="checkbox" id="toggle-cart">
     <div class="cart-body">
-        <h3>My Cart</h3>
+        <h3>My Cart<span class="close-cart" onclick="hideCart()">close</span></h3>
         <ul id="cart-items">
             <!-- Products to be added via javascript as <li> tags -->
             <li id="empty">Cart is empty!</li>
         </ul>
         <div class="cart-btn-container">
             <span class="checkout"><a href="#">Checkout</a></span>
-            <span class="cancel" onclick="clearCart()">Cancel</span>
+            <span class="cancel" onclick="clearCart()">Empty Cart</span>
         </div>
     </div>
 

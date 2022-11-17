@@ -152,15 +152,20 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1rem;
-    padding: .5rem;
+    padding: 1rem;
     justify-items: center;
     align-items: center;
 }
 
+.brands > div > .logos > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .brands > div > .logos {
-    width: 100px;
-    height: 100px;
-    margin: 1rem;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     background-color: #fff;
     border: none;
@@ -168,6 +173,7 @@ body {
     transform: scale(1);
     transition: transform 1s ease;
     overflow: hidden;
+    text-align: center;
 }
 
 .brands > div > .logos:hover {
@@ -188,15 +194,15 @@ body {
 }
 
 .exclusives > .header {
+    font-size: 2rem;
     text-align: center;
-    padding: 1rem;
 }
 
 .exclusives > .header > h1 {
     display: inline-block;
     position: relative;
     color: #333;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .exclusives > .header > h1::after {
@@ -235,13 +241,18 @@ body {
     border: 1px solid #333;
     box-shadow: 0 10px 6px -6px #777;
     transform: scale(1);
-    transition: transform 1s ease;
+    -webkit-filter: grayscale(0);
+    filter: 0;
+    transition: all 1s ease;
     overflow: hidden;
+    position: relative;
 }
 
 .exclusives > .products > .item:hover {
     transform: scale(120%);
-    transition: transform .5s ease-in;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    transition: all .5s ease-in;
 }
 
 .exclusives > .products > .item > img {
@@ -415,6 +426,21 @@ input[type=text] {
     transform: scale(1.5);
 }
 
+.cart-btn > .counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e04747;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
 input[type=checkbox] {
     position: absolute;
     bottom: 20px;
@@ -427,13 +453,15 @@ input[type=checkbox]:checked ~ .cart-body {
 }
 
 .cart-body {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
+    height: -moz-fit-content;
     height: fit-content;
-    max-height: 400px;
+    /* height: 30vh; */
+    max-height: 70vh;
     background-color: #333;
     border-radius: 4px;
     display: flex;
@@ -449,9 +477,15 @@ input[type=checkbox]:checked ~ .cart-body {
 .cart-body > ul {
     list-style-type: none;
     width: 100%;
-    max-height: 100%;
+    height: 30vh;
+    scroll-behavior: smooth;
+    max-height: max-content;
     overflow-y: scroll;
     padding: 10px;
+}
+
+.cart-body > ul::-webkit-scrollbar {
+    width: 0;
 }
 
 .cart-body > ul > li {
@@ -461,7 +495,20 @@ input[type=checkbox]:checked ~ .cart-body {
 
 .cart-body > h3 {
     font-size: 1.3rem;
-    color: #fff
+    color: #fff;
+}
+
+.cart-body > h3 > .close-cart {
+    font-size: 1rem;
+    position: absolute;
+    color: #777;
+    right: 0;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cart-body > h3 > .close-cart:hover {
+    color: #fff;
 }
 
 .cart-body > .cart-btn-container {
@@ -481,8 +528,19 @@ input[type=checkbox]:checked ~ .cart-body {
     padding: .5rem;
 }
 
-.cart-list-item > .remove-item {
+.cart-list-item {
+    position: relative;
+}
+
+.cart-list-item > .price {
     float: right;
+    margin-right: 15px;
+}
+
+.cart-list-item > .remove-item {
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
 }
 
 .cart-list-item > .remove-item:hover {
