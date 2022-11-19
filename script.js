@@ -1,3 +1,9 @@
+const parallax = document.getElementById('parallax-img');
+window.addEventListener('scroll', function() {
+    let offset = window.pageYOffset;
+    parallax.style.backgroundPosition = offset * 0.8 + 'px';
+})
+
 function search_products() {
 // Uses searchbar values as input then displays only the product-cards with the searched values.
     let input = document.getElementById('searchbar').value
