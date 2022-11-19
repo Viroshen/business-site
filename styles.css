@@ -643,7 +643,7 @@ input[type=checkbox]:checked ~ .cart-body {
         background-color: #333;
         height: 0px;
         transition: all 0.3s ease-in;
-        overflow-y: hidden;
+        overflow: hidden;
         top: 50px;
         left: 0px;
     }
@@ -667,8 +667,17 @@ input[type=checkbox]:checked ~ .cart-body {
         font-size: 6rem;
     }
 
+    #highlight-products > .product {
+        flex-direction: column;
+    }
+
     #highlight-products > .product > .text-box {
         padding: .5rem;
+    }
+
+    #highlight-products > .product > img {
+        margin-bottom: .5rem;
+        margin-top: .5rem;
     }
 
     .about-container {
