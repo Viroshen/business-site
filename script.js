@@ -1,8 +1,14 @@
-const parallax = document.getElementById('parallax-img');
-window.addEventListener('scroll', function() {
-    let offset = window.pageYOffset;
-    parallax.style.backgroundPosition = offset * 0.8 + 'px';
-})
+window.onscroll = function() {
+    var elem = dovument.getElementsByClassName('dot')
+    for (i = 0; i < elem.length; i++) {
+        if (elem[i].getBoundingClientRect().top <= 0) {
+            for (j=0; elem.length; j++) {
+                elem[j].classList.remove('active')
+            }
+            elem[i].classList.add('active')
+        }
+    }
+}
 
 function search_products() {
 // Uses searchbar values as input then displays only the product-cards with the searched values.

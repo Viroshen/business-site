@@ -95,6 +95,12 @@ p {
     text-align: center;
     width: 70vw;
     height: fit-content;
+    animation: fadeEffect 3s;
+}
+
+@keyframes fadeEffect {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 #hero > .hero-text > h1 {
@@ -253,6 +259,24 @@ p {
     /* transform: translate(-5px, -5px); */
     background-color: #4169e1;
     color: #fff;
+}
+
+#footer > a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    padding: .5rem;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    transition: all .25s ease-in-out;
+}
+
+#footer > a:hover {
+    transform: scale(1.5);
+    background-color: rgba(0, 0, 0, .2);
+    border: 1px solid #fff;
 }
 /* ///////////////////////////////////Shop/Products////////////////////////// */
 .shop-header {
@@ -455,7 +479,9 @@ input[type=checkbox]:checked ~ .cart-body {
     height: fit-content;
     /* height: 30vh; */
     max-height: 70vh;
-    background-color: #333;
+    background-color: #fff;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .3);
+    border: 1px solid rgba(0, 0, 0, .3);
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
@@ -475,6 +501,7 @@ input[type=checkbox]:checked ~ .cart-body {
     max-height: max-content;
     overflow-y: scroll;
     padding: 10px;
+    margin-left: 5px;
 }
 
 .cart-body > ul::-webkit-scrollbar {
@@ -488,20 +515,20 @@ input[type=checkbox]:checked ~ .cart-body {
 
 .cart-body > h3 {
     font-size: 1.3rem;
-    color: #fff;
+    color: #333;
 }
 
 .cart-body > h3 > .close-cart {
     font-size: 1rem;
     position: absolute;
-    color: #777;
+    color: #333;
     right: 0;
     margin: 5px;
     cursor: pointer;
 }
 
 .cart-body > h3 > .close-cart:hover {
-    color: #fff;
+    color: #777;
 }
 
 .cart-body > .cart-btn-container {
@@ -514,8 +541,9 @@ input[type=checkbox]:checked ~ .cart-body {
 
 .cart-body > .cart-btn-container > span {
     width: 100%;
+    height: -moz-fit-content;
     height: fit-content;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     background-color: #777;
     text-align: center;
     padding: .5rem;
@@ -563,26 +591,35 @@ input[type=checkbox]:checked ~ .cart-body {
 }
 /* ///////////////////////////////////About Page///////////////////////// */
 .about-body {
-    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
 .about-background {
     width: 100vw;
-    height: calc(100vh - 50px);
-    background-color: whitesmoke;
-    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5));
+    height: 100vh;
+    background-color: #333;
+    /* background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)); */
     clip-path: polygon(0 0, 30% 0, 70% 100%, 0 100%);
-    position: absolute;
+    position: fixed;
     z-index: -1;
 }
 
 .about-container {
-    margin-top: 50px;
+    margin-top: 70px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 0px;
     padding: 1rem;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .2);
+    border-radius: 3px;
 }
 
 .about-container > img {
@@ -590,16 +627,17 @@ input[type=checkbox]:checked ~ .cart-body {
     min-height: 100%;
     object-fit: cover;
     display: block;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
+    /* -webkit-filter: grayscale(1);
+    filter: grayscale(1); */
     transition: all 100ms ease-out;
+    border-radius: 3px;
 }
 
 .about-container > img:hover {
     transform: scale(1.04);
     cursor: pointer;
-    -webkit-filter: grayscale(0);
-    filter: grayscale(0);
+    /* -webkit-filter: grayscale(0);
+    filter: grayscale(0); */
 }
 .about-container > .card {
     max-width: 100%;
@@ -607,11 +645,28 @@ input[type=checkbox]:checked ~ .cart-body {
     display: block;
     background-color: #fff;
     padding: 1rem;
-    border-bottom: 1px solid #333;
+    border-radius: 3px;
 }
 
 .about-container > .card > p {
+    margin-top: .5rem;
     text-align: center;
+}
+
+.about-body > a {
+    text-decoration: none;
+    padding: .5rem;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    margin: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: all .25s ease-in-out;
+}
+
+.about-body > a:hover {
+    transform: scale(1.5);
+    border-width: 1px;
 }
 /* ///////////////////////////////////Responsiveness///////////////////////// */
 @media (max-width:600px) {
