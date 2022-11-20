@@ -382,7 +382,7 @@ input[type=text] {
 
 .gallery > .product-card > button {
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #4169e1;
@@ -738,5 +738,13 @@ input[type=checkbox]:checked ~ .cart-body {
     .about-container {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
+    }
+
+    .about-body > a {
+        color: rgba(0, 0, 0, .5);
+    }
+
+    .about-body {
+        padding: 5px;
     }
 }
