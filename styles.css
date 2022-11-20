@@ -279,6 +279,16 @@ p {
     border: 1px solid #fff;
 }
 /* ///////////////////////////////////Shop/Products////////////////////////// */
+.shop-background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    /* background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)); */
+    clip-path: polygon(0 0, 30% 0, 70% 100%, 0 100%);
+    position: fixed;
+    z-index: -1;
+}
+
 .shop-header {
     margin-top: 50px;
     padding: .5rem;
@@ -363,6 +373,7 @@ input[type=text] {
     height: 300px;
     border-radius: 5px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .2);
+    background-color: #fff;
     display: flex;
     align-items: center;
     margin: auto; /* center grid-items */
@@ -500,8 +511,6 @@ input[type=checkbox]:checked ~ .cart-body {
     scroll-behavior: smooth;
     max-height: max-content;
     overflow-y: scroll;
-    padding: 10px;
-    margin-left: 5px;
 }
 
 .cart-body > ul::-webkit-scrollbar {
@@ -656,10 +665,12 @@ input[type=checkbox]:checked ~ .cart-body {
 .about-body > a {
     text-decoration: none;
     padding: .5rem;
-    border: 2px solid #fff;
+    /* border: 2px solid #fff; */
+    background-color: #fff;
     border-radius: 3px;
     margin: 1rem;
-    color: #fff;
+    color: #333;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .3);
     font-size: 1.5rem;
     transition: all .25s ease-in-out;
 }
