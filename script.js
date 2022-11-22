@@ -1,15 +1,3 @@
-window.onscroll = function() {
-    var elem = dovument.getElementsByClassName('dot')
-    for (i = 0; i < elem.length; i++) {
-        if (elem[i].getBoundingClientRect().top <= 0) {
-            for (j=0; elem.length; j++) {
-                elem[j].classList.remove('active')
-            }
-            elem[i].classList.add('active')
-        }
-    }
-}
-
 function search_products() {
 // Uses searchbar values as input then displays only the product-cards with the searched values.
     let input = document.getElementById('searchbar').value
@@ -26,6 +14,34 @@ function search_products() {
     }
 }
 
+function getCategory(category) {
+    // This function filters the displayed products by category.
+    var x = document.getElementsByClassName('category')
+
+    // loop through "category" containers and display only the one with the specific id.
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].id.includes(category)) {
+            x[i].style.display = 'none'
+        } else {
+            x[i].style.display = 'grid'
+            // if "category" container is empty then an alert will show.
+            if (x[i].childElementCount == 0) {
+                alert('Sorry, we seem to have run out of ' + x[i].id + '!')
+            }
+        }
+    }
+
+    var categoryBtn = document.getElementsByClassName('category-btn')
+
+    for (i = 0; i < categoryBtn.length; i++) {
+        if (categoryBtn[i].classList.contains('active-category') && !categoryBtn[i].id.includes(category)) {
+            categoryBtn[i].classList.remove('active-category')
+        }
+    }
+    var activeCategorybtn = document.getElementById(category)
+    activeCategorybtn.classList.add('active-category')
+}
+
 var ul = document.getElementById("cart-items")
 
 function isCartEmpty() {
@@ -35,6 +51,9 @@ function isCartEmpty() {
         li.setAttribute('id', 'empty')
         li.appendChild(document.createTextNode('Cart is empty!'))
         ul.appendChild(li)
+
+        var checkoutLink = document.getElementById('checkout')
+        checkoutLink.setAttribute('pointer-events', 'none')
     }
 }
 
@@ -76,6 +95,11 @@ function addToCart(id) {
     description.setAttribute('class', 'item-description')
     li.appendChild(description)
 
+    var quantity = document.createElement('span')
+    quantity.innerHTML = "Qty."
+    quantity.setAttribute('class', 'qty')
+    li.appendChild(quantity)
+
     var price = document.createElement('span')
     price.innerHTML = product.getAttribute('price')
     price.setAttribute('class', 'price')
@@ -92,6 +116,36 @@ function addToCart(id) {
 
     var counter = document.getElementsByClassName('counter')[0]
     counter.innerHTML = parseInt(counter.innerHTML) + 1
+
+    var checkoutLink = document.getElementById('checkout')
+    checkoutLink.style.pointerEvents = 'all'
+
+    var quantityContainer = document.getElementsByClassName('quantity')[0]
+    quantityContainer.style.scale = 1
+
+    var qtyInput = document.getElementById('qty')
+    qtyInput.value = ''
+    
+
+    var overlay = document.getElementsByClassName('overlay')[0]
+    overlay.style.display = 'block'
+}
+
+function confirmQuantity() {
+    var qtyInput = document.getElementById('qty').value
+    // console.log(typeof(Number(qtyInput)))
+    if (!(Number(qtyInput) >= 0) || qtyInput == '') {
+        alert('Invalid quantity specified!')
+    } else {
+        var listItemQuantity = ul.lastChild.getElementsByClassName('qty')[0]
+        listItemQuantity.innerHTML = qtyInput
+
+        var quantityContainer = document.getElementsByClassName('quantity')[0]
+        quantityContainer.style.scale = 0
+        
+        var overlay = document.getElementsByClassName('overlay')[0]
+        overlay.style.display = 'none'
+    }
 }
 
 function removeItem(id) {
@@ -121,4 +175,18 @@ function hideCart() {
 // Hide / Close cart by toggling checkbox.
     var toggleBtn = document.getElementById('toggle-cart')
     toggleBtn.checked = !toggleBtn.checked
+}
+
+function sendEmail() {
+    Email.send({
+        SecureToken: "16738e5e-b4d1-40d4-8cec-68b00e6b21b1",
+        To: "viroshens15@gmail.com",
+        From: "mikehunt.6654@gmail.com",
+        Subject: "Email from website through javascript",
+        Body: "Did it work??"
+    })
+
+    .then(function (message) {
+        alert("mail sent successfully")
+    })
 }

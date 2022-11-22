@@ -289,6 +289,15 @@ p {
     z-index: -1;
 }
 
+.overlay {
+    background-color: rgba(0, 0, 0, .3);
+    display: none;
+    height:100%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
 .shop-header {
     margin-top: 50px;
     padding: .5rem;
@@ -360,15 +369,48 @@ input[type=text] {
     animation-delay: 1.3s;
 }
 
-.gallery {
+.gallery > .category-selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.gallery > .category-selectors > .category-btn {
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 20px;
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .3);
+    border-radius: 3px;
+    /* border: 1px solid #777; */
+    transition: background-color .25s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery > .category-selectors > .category-btn:hover {
+    background-color: #4169e1;
+}
+
+.gallery > .category-selectors > .active-category {
+    background-color: #4169e1;
+}
+
+/* .gallery > .category-selectors > .category-btn > .dropdown {} */
+
+.gallery > .category { 
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
    gap: .5rem;
    align-items: center;
    justify-content: center;
+   margin-bottom: 2rem;
+   margin-top: 2rem;
 }
 
-.gallery > .product-card {
+.gallery > .category > .product-card {
     width: 200px;
     height: 300px;
     border-radius: 5px;
@@ -383,15 +425,15 @@ input[type=text] {
     position: relative;
 }
 
-.gallery > .product-card:hover {
+.gallery > .category > .product-card:hover {
     transform: translateY(-10px);
 }
 
-.gallery > .product-card:hover img {
+.gallery > .category > .product-card:hover img {
     opacity: .5;
 }
 
-.gallery > .product-card > button {
+.gallery > .category > .product-card > button {
     position: absolute;
     top: 20%;
     left: 50%;
@@ -405,31 +447,31 @@ input[type=text] {
     display: none;
 }
 
-.gallery > .product-card > button:hover {
+.gallery > .category > .product-card > button:hover {
     opacity: .9;
 }
 
-.gallery > .product-card:hover button {
+.gallery > .category > .product-card:hover button {
     display: inline-block;
 }
 
-.gallery > .product-card > img {
+.gallery > .category > .product-card > img {
     width: 100%;
     height: 70%;
     object-fit: cover;
 }
 
-.gallery > .product-card > .product-title {
+.gallery > .category > .product-card > .product-title {
     text-align: center;
     padding: 5px;
 }
 
-.gallery > .product-card > .product-title > h3 {
+.gallery > .category > .product-card > .product-title > h3 {
     color:#777;
     font-size: 1.1rem;
 }
 
-.gallery > .product-card > .product-title > p {
+.gallery > .category > .product-card > .product-title > p {
     font-size: 1rem;
 }
 
@@ -558,8 +600,61 @@ input[type=checkbox]:checked ~ .cart-body {
     padding: .5rem;
 }
 
+.quantity {
+    scale: 0;
+    height: 100px;
+    text-align: center;
+    border-radius: 3px;
+    position: fixed;
+    background-color: #fff;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    gap: .5rem;
+    z-index: 101;
+}
+
+.quantity > #qty {
+    width: 5rem;
+    padding: .5rem;
+}
+
+.quantity > .confirm-btn {
+    padding: .5rem;
+    border: 1px solid #4169e1;
+    color: #4169e1;
+    transition: all .25s ease-in-out;
+}
+
+.quantity > .confirm-btn:hover {
+    background-color: #4169e1;
+    color: #fff;
+}
+
 .cart-list-item {
     position: relative;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.cart-list-item > .item-description {
+    text-overflow: ellipsis;
+}
+
+.cart-list-item > .quantity {
+    max-width: 2rem;
+    height: 1.1rem;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 1px;
 }
 
 .cart-list-item > .price {
@@ -593,6 +688,7 @@ input[type=checkbox]:checked ~ .cart-body {
     color: #fff;
     font-size: 1.5rem;
     width: 100%;
+    pointer-events: none;
 }
 
 .cart-body > .cart-btn-container > .checkout {
