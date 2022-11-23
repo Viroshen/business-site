@@ -14,37 +14,32 @@ function search_products() {
     }
 }
 
-function getCategory(category) {
-    // This function filters the displayed products by category.
+function showCategory(obj) {
+    // This function filters the displayed products by sub-category.
     var x = document.getElementsByClassName('category')
 
-    // loop through "category" containers and display only the one with the specific id.
+    console.log(obj.getAttribute('category'))
+    console.log(obj.getAttribute('sub'))
     for (i = 0; i < x.length; i++) {
-        if (!x[i].id.includes(category)) {
-            x[i].style.display = 'none'
-        } else {
-            x[i].style.display = 'grid'
-            // if "category" container is empty then an alert will show.
+        if (x[i].classList.contains('active-category') && !x[i].getAttribute('sub').includes(obj.getAttribute('sub'))) {
+            x[i].classList.remove('active-category')
+        }
+    }
+
+    var y = document.getElementsByClassName(obj.getAttribute('category'))
+    for (i = 0; i < y.length; i++) {
+        if (x[i].getAttribute('sub').includes(obj.getAttribute('sub'))) {
+            x[i].classList.add('active-category')
+
             if (x[i].childElementCount == 0) {
-                alert('Sorry, we seem to have run out of ' + x[i].id + '!')
+                alert("Oh no, seems we've run out of these!")
             }
         }
     }
-
-    var categoryBtn = document.getElementsByClassName('category-btn')
-
-    for (i = 0; i < categoryBtn.length; i++) {
-        if (categoryBtn[i].classList.contains('active-category') && !categoryBtn[i].id.includes(category)) {
-            categoryBtn[i].classList.remove('active-category')
-        }
-    }
-    var activeCategorybtn = document.getElementById(category)
-    activeCategorybtn.classList.add('active-category')
 }
 
-var ul = document.getElementById("cart-items")
-
 function isCartEmpty() {
+    var ul = document.getElementById("cart-items")
 // isCartEmpty() checks if the cart is currently empty, and if so, it will display "Cart is empty!".
     if (ul.childElementCount == 0) {
         var li = document.createElement('li')
@@ -77,6 +72,8 @@ function generateID() {
 }
 
 function addToCart(id) {
+    var ul = document.getElementById("cart-items")
+    console.log(ul)
 // Creates li tag for every item added to the cart.
     var empty = document.getElementById('empty')
     if (empty != null) {
@@ -110,6 +107,8 @@ function addToCart(id) {
     removeItem.setAttribute('class', 'remove-item')
     removeItem.setAttribute('onclick', "removeItem(this.parentNode.id)")
     li.appendChild(removeItem)
+
+    console.log(ul)//
     
     ul.appendChild(li)
     li.scrollIntoView()
@@ -132,6 +131,7 @@ function addToCart(id) {
 }
 
 function confirmQuantity() {
+    var ul = document.getElementById("cart-items")
     var qtyInput = document.getElementById('qty').value
     // console.log(typeof(Number(qtyInput)))
     if (!(Number(qtyInput) >= 0) || qtyInput == '') {
@@ -145,12 +145,29 @@ function confirmQuantity() {
         
         var overlay = document.getElementsByClassName('overlay')[0]
         overlay.style.display = 'none'
+        
+        if (Number(qtyInput) == 0) {
+            removeItem(ul.lastChild.id)
+        } else {
+            var totalAmt = document.getElementsByClassName('total-amount')[0]
+            var amount = 0.00
+            amount = parseFloat(ul.lastChild.childNodes[2].innerHTML) * parseFloat(qtyInput)
+            amount += parseFloat(totalAmt.innerHTML)
+            console.log(amount.toFixed(2))
+            totalAmt.innerHTML = amount.toFixed(2)
+        }
     }
 }
 
 function removeItem(id) {
+    var ul = document.getElementById("cart-items")
 // Removes parent li tag from cart ul, using the given child's id to specify.
     var item = document.getElementById(id)
+
+    var total = document.getElementsByClassName('total-amount')[0]
+    var newTotal = parseFloat(total.innerHTML) - parseFloat(item.childNodes[2].innerHTML)
+    total.innerHTML = newTotal.toFixed(2)
+
     item.parentNode.removeChild(item)
     isCartEmpty()
 
@@ -159,11 +176,15 @@ function removeItem(id) {
 }
 
 function clearCart() {
+    var ul = document.getElementById("cart-items")
 // Loops through ul(cart) removing each list item, then displays "Cart is empty!".
     while (ul.firstChild) {
         ul.removeChild(ul.firstChild)
     }
     isCartEmpty()
+
+    var total = document.getElementsByClassName('total-amount')[0]
+    total.innerHTML = "0.00"
 
     var counter = document.getElementsByClassName('counter')[0]
     counter.innerHTML = 0

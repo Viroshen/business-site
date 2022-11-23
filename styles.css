@@ -373,41 +373,68 @@ input[type=text] {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    gap: 1rem;
+    padding: 10px;
 }
 
 .gallery > .category-selectors > .category-btn {
-    width: -moz-fit-content;
     width: fit-content;
-    height: 20px;
+    margin: 5px;
     padding: 5px;
+    border-radius: 3px;
     background-color: #fff;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .3);
-    border-radius: 3px;
-    /* border: 1px solid #777; */
-    transition: background-color .25s ease-in-out;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .gallery > .category-selectors > .category-btn:hover {
     background-color: #4169e1;
 }
 
-.gallery > .category-selectors > .active-category {
-    background-color: #4169e1;
+.gallery > .category-selectors > .category-btn:hover .sub-category-container {
+    height: -moz-fit-content;
+    height: fit-content;
 }
 
-/* .gallery > .category-selectors > .category-btn > .dropdown {} */
+.gallery > .category-selectors > .category-btn > .sub-category-container {
+    position: absolute;
+    width: -moz-fit-content;
+    width: fit-content;
+    max-width: 200px;
+    z-index: 10;
+    background-color: #fff;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .3);
+    border-radius: 3px;
+    margin-top: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 0;
+    transition: height .5s ease-in-out;
+    transition-duration: 2s;
+}
+
+.gallery > .category-selectors > .category-btn > .sub-category-container > .sub-category {
+    list-style-type: none;
+    /* width: 100%; */
+    padding: 5px;
+}
+
+.gallery > .category-selectors > .category-btn > .sub-category-container > .sub-category:hover {
+    background-color: #4169e1;
+    color: #fff;
+}
 
 .gallery > .category { 
-   display: grid;
+   display: none;
    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
    gap: .5rem;
    align-items: center;
    justify-content: center;
    margin-bottom: 2rem;
    margin-top: 2rem;
+}
+
+.gallery > .active-category {
+    display: grid;
 }
 
 .gallery > .category > .product-card {
@@ -548,11 +575,13 @@ input[type=checkbox]:checked ~ .cart-body {
 
 .cart-body > ul {
     list-style-type: none;
-    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
     height: 30vh;
     scroll-behavior: smooth;
     max-height: max-content;
     overflow-y: scroll;
+    padding-bottom: 5px;
 }
 
 .cart-body > ul::-webkit-scrollbar {
@@ -562,6 +591,14 @@ input[type=checkbox]:checked ~ .cart-body {
 .cart-body > ul > li {
     font-size: 1.1rem;
     color: #777;
+}
+
+.cart-body > .total {
+    padding: 5px;
+    /* margin-left: 5px; */
+    text-align: center;
+    background-color: rgba(0, 0, 0, .2);
+    width: 100%;
 }
 
 .cart-body > h3 {
@@ -602,7 +639,9 @@ input[type=checkbox]:checked ~ .cart-body {
 
 .quantity {
     scale: 0;
-    height: 100px;
+    height: -moz-fit-content;
+    height: fit-content;
+    max-height: 200px;
     text-align: center;
     border-radius: 3px;
     position: fixed;

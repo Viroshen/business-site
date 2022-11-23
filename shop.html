@@ -7,6 +7,9 @@
     <title>Smoke Shop</title>
 
     <link rel="stylesheet" href="styles.css">
+
+    <script src="https://kit.fontawesome.com/e88f34759b.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="nav">
@@ -47,48 +50,32 @@
     
     <div class="gallery">
         <div class="category-selectors">
-            <!-- span element below is category tags, their id is the category shown. -->
-            <span class="category-btn active-category" id="lighters" onclick="getCategory(this.id)">Lighters<span class="dropdown" onclick="showSubCategory()"></span></span>
-            <span class="category-btn" id="cigars" onclick="getCategory(this.id)">Cigars<span class="dropdown" onclick="showSubCategory()"></span></span>
+            <div class="category-btn">
+                <span class="category-title" category="highlights" sub="Highlights" onclick="showCategory(this)">Highlights</span>
+            </div>
+            <div class="category-btn">
+                <span class="category-title">Lighters</span>
+                <ul class="sub-category-container">
+                    <li class="sub-category" category="lighters" sub="Zippo" onclick="showCategory(this)">Zippo</li>
+                    <li class="sub-category" category="lighters" sub="Colibri" onclick="showCategory(this)">Colibri</li>
+                    <li class="sub-category" category="lighters" sub="Clipper" onclick="showCategory(this)">Clipper</li>
+                    <li class="sub-category" category="lighters" sub="Ronson" onclick="showCategory(this)">Ronson</li>
+                    <li class="sub-category" category="lighters" sub="Bic" onclick="showCategory(this)">Bic</li>
+                    <li class="sub-category" category="lighters" sub="Alfred-Dunhill" onclick="showCategory(this)">Alfred Dunhill</li>
+                </ul>
+            </div>
+            <div class="category-btn">
+                <span class="category-title">Cigars</span>
+                <ul class="sub-category-container">
+                    <li class="sub-category" category="cigars" sub="Brand 1" onclick="showCategory(this)">Brand 1</li>
+                    <li class="sub-category" category="cigars" sub="Brand 2" onclick="showCategory(this)">Brand 2</li>
+                    <li class="sub-category" category="cigars" sub="Brand 3" onclick="showCategory(this)">Brand 3</li>
+                </ul>
+            </div>
         </div>
-        <!-- category div contains all products under a category, it's id specifies the category. -->
-        <div class="category" id="lighters">
-            <div id="Ab123" description="Clipper - lighter" category="lighters" price="49.99" class="product-card">
-                <img src="images/product1.jpg" alt="">
-                <div class="product-title">
-                    <h3>Clipper - Lighter</h3>
-                    <p>R49.99</p>
-                </div>
-                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
-            </div>
-    
-            <div id="cH342" description="Alfred Dunhill - lighter" category="lighters" price="349.99" class="product-card">
-                <img src="images/product2.jpg" alt="">
-                <div class="product-title">
-                    <h3>Alfred Dunhill - lighter</h3>
-                    <p>R349.99</p>
-                </div>
-                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
-            </div>
-    
-            <div id="LP385" description="Colibri - lighter" category="lighters" price="100.00" class="product-card">
-                <img src="images/product2.jpg" alt="">
-                <div class="product-title">
-                    <h3>Colibri - lighter</h3>
-                    <p>R100.00</p>
-                </div>
-                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
-            </div>
-            
-            <div id="Hg894" description="Ronson - lighter" category="lighters" price="129.50" class="product-card">
-                <img src="images/product2.jpg" alt="">
-                <div class="product-title">
-                    <h3>Ronson - lighter</h3>
-                    <p>R129.50</p>
-                </div>
-                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
-            </div>
-    
+
+        <!-- category div contains all products under a category, the 'sub' attribute specifies the sub-category. -->
+        <div class="category highlights active-category" sub="Highlights">
             <div id="Jk403" description="Zippo - lighter(gold)" category="lighters" price="280.00" class="product-card">
                 <img src="images/product2.jpg" alt="">
                 <div class="product-title">
@@ -97,7 +84,71 @@
                 </div>
                 <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
             </div>
-    
+            <div id="Jk403" description="Zippo - lighter(gold)" category="lighters" price="280.00" class="product-card">
+                <img src="images/product2.jpg" alt="">
+                <div class="product-title">
+                    <h3>Zippo - lighter(gold)</h3>
+                    <p>R280.00</p>
+                </div>
+                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            </div>
+            <div id="Jk403" description="Zippo - lighter(gold)" category="lighters" price="280.00" class="product-card">
+                <img src="images/product2.jpg" alt="">
+                <div class="product-title">
+                    <h3>Zippo - lighter(gold)</h3>
+                    <p>R280.00</p>
+                </div>
+                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="category lighters" sub="Zippo">
+            <div id="Jk403" description="Zippo - lighter(gold)" category="lighters" price="280.00" class="product-card">
+                <img src="images/product2.jpg" alt="">
+                <div class="product-title">
+                    <h3>Zippo - lighter(gold)</h3>
+                    <p>R280.00</p>
+                </div>
+                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="category lighters" sub="Colibri">
+            <!-- add product cards -->
+            <div id="LP385" description="Colibri - lighter" category="lighters" price="100.00" class="product-card">
+                <img src="images/product2.jpg" alt="">
+                <div class="product-title">
+                    <h3>Colibri - lighter</h3>
+                    <p>R100.00</p>
+                </div>
+                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="category lighters" sub="Clipper">
+            <!-- add product cards -->
+            <div id="Ab123" description="Clipper - lighter" category="lighters" price="49.99" class="product-card">
+                <img src="images/product1.jpg" alt="">
+                <div class="product-title">
+                    <h3>Clipper - Lighter</h3>
+                    <p>R49.99</p>
+                </div>
+                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="category lighters" sub="Ronson">
+            <div id="Hg894" description="Ronson - lighter" category="lighters" price="129.50" class="product-card">
+                <img src="images/product2.jpg" alt="">
+                <div class="product-title">
+                    <h3>Ronson - lighter</h3>
+                    <p>R129.50</p>
+                </div>
+                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="category lighters" sub="Bic">
             <div id="Ab342" description="Bic - lighter" category="lighters" price="29.90" class="product-card">
                 <img src="images/product2.jpg" alt="">
                 <div class="product-title">
@@ -108,9 +159,19 @@
             </div>
         </div>
 
-        <div class="category" id="cigars">
-            <!-- add product cards -->
+        <div class="category lighters" sub="Alfred-Dunhill">
+            <div id="cH342" description="Alfred Dunhill - lighter" category="lighters" price="349.99" class="product-card">
+                <img src="images/product2.jpg" alt="">
+                <div class="product-title">
+                    <h3>Alfred Dunhill - lighter</h3>
+                    <p>R349.99</p>
+                </div>
+                <button class="add-btn" onclick="addToCart(this.parentNode.id)">Add to Cart</button>
+            </div>
         </div>
+
+        <div class="category lighters" sub="Do-not-remove"></div>
+        
     </div>
 
     <div class="quantity">
@@ -127,14 +188,11 @@
             <!-- Products to be added via javascript as <li> tags -->
             <li id="empty">Cart is empty!</li>
         </ul>
-        <span class="total"></span>
+        <div class="total">Total: R<span class="total-amount">0.00</span></div>
         <div class="cart-btn-container">
             <span class="checkout"><a id="checkout" href="shipping.html" target="_blank">Checkout</a></span>
             <span class="cancel" onclick="clearCart()">Empty Cart</span>
         </div>
     </div>
-
-    <script src="https://kit.fontawesome.com/e88f34759b.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
 </body>
 </html>
