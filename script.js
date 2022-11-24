@@ -1,3 +1,21 @@
+function showProductDetail(id) {
+    document.body.style.overflow = 'hidden'
+
+    var productCard = document.getElementById(id).cloneNode(true)
+    productCard.classList.add('selected')
+    var overlay = document.querySelector('.overlay')
+
+    overlay.appendChild(productCard)
+    overlay.style.display = 'flex'
+
+    overlay.addEventListener('click', function hideProductDetails() {
+        productCard.parentNode.removeChild(productCard)
+        overlay.style.display = 'none'
+
+        document.body.style.overflow = 'scroll'
+    })
+}
+
 function search_products() {
 // Uses searchbar values as input then displays only the product-cards with the searched values.
     let input = document.getElementById('searchbar').value
@@ -18,8 +36,6 @@ function showCategory(obj) {
     // This function filters the displayed products by sub-category.
     var x = document.getElementsByClassName('category')
 
-    console.log(obj.getAttribute('category'))
-    console.log(obj.getAttribute('sub'))
     for (i = 0; i < x.length; i++) {
         if (x[i].classList.contains('active-category') && !x[i].getAttribute('sub').includes(obj.getAttribute('sub'))) {
             x[i].classList.remove('active-category')
@@ -73,7 +89,7 @@ function generateID() {
 
 function addToCart(id) {
     var ul = document.getElementById("cart-items")
-    console.log(ul)
+
 // Creates li tag for every item added to the cart.
     var empty = document.getElementById('empty')
     if (empty != null) {
@@ -107,8 +123,6 @@ function addToCart(id) {
     removeItem.setAttribute('class', 'remove-item')
     removeItem.setAttribute('onclick', "removeItem(this.parentNode.id)")
     li.appendChild(removeItem)
-
-    console.log(ul)//
     
     ul.appendChild(li)
     li.scrollIntoView()
@@ -125,9 +139,10 @@ function addToCart(id) {
     var qtyInput = document.getElementById('qty')
     qtyInput.value = ''
     
-
     var overlay = document.getElementsByClassName('overlay')[0]
     overlay.style.display = 'block'
+
+    document.body.style.overflowY = 'hidden'
 }
 
 function confirmQuantity() {
@@ -147,7 +162,13 @@ function confirmQuantity() {
         overlay.style.display = 'none'
         
         if (Number(qtyInput) == 0) {
-            removeItem(ul.lastChild.id)
+            // removeItem(ul.lastChild.id)
+            ul.lastChild.parentElement.removeChild(ul.lastChild)
+            isCartEmpty()
+
+            var counter = document.getElementsByClassName('counter')[0]
+            counter.innerHTML = parseInt(counter.innerHTML) - 1
+
         } else {
             var totalAmt = document.getElementsByClassName('total-amount')[0]
             var amount = 0.00
@@ -157,6 +178,7 @@ function confirmQuantity() {
             totalAmt.innerHTML = amount.toFixed(2)
         }
     }
+    document.body.style.overflowY = 'scroll'
 }
 
 function removeItem(id) {
